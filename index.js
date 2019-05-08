@@ -6,7 +6,7 @@ const app = express();
 
 const users = require('./router/api/user')
 
-mongoose.connect('mongodb://zhubo:111111@123.56.11.141:27017/admin',{useNewUrlParser:true})
+mongoose.connect('mongodb://zhubo:111111@mongodb_docker:27017/admin',{useNewUrlParser:true})
     .then(() => console.log('cuccess'))
     .catch((err) => console.log(err))
 
