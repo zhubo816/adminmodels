@@ -61,6 +61,6 @@ app.listen(port, () => {
 //
 // db.grantRolesToUser("zhubo", [ { role:"dbOwner", db:"admin"} ]) ;
 
-db.createUser({user:"zhubo",pwd:'111111',roles:[{role:"dbAdmin",db:"student"}]})
-
-db.grantRolesToUser("zhubo", [ { role:"dbOwner", db:"admin"} ]) ;
+// db.createUser({user:"zhubo",pwd:'111111',roles:[{role:"dbAdmin",db:"student"}]})
+//
+// db.grantRolesToUser("zhubo", [ { role:"dbOwner", db:"admin"} ]) ;
