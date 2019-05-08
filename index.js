@@ -6,7 +6,7 @@ const app = express();
 
 const users = require('./router/api/user')
 
-mongoose.connect('mongodb://zhubo:111111@localhost:27017/admin',{useNewUrlParser:true})
+mongoose.connect('mongodb://zhubo:111111@123.56.11.141:27017/admin',{useNewUrlParser:true})
     .then(() => console.log('cuccess'))
     .catch((err) => console.log(err))
 
@@ -27,10 +27,15 @@ app.use(passport.initialize());
 
 require('./config/passport')(passport);
 
+
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`listen ${port}`);
 });
+
+//docker run -d --name model-app -p 3000:3000 models
 // /usr/local/var/mongodb
 
 // #security:
@@ -55,3 +60,7 @@ app.listen(port, () => {
 // docker run -it --rm --link mongodb_docker:mongo mongo mongo --host mongo -u zhubo -p 111111 --authenticationDatabase admin
 //
 // db.grantRolesToUser("zhubo", [ { role:"dbOwner", db:"admin"} ]) ;
+
+db.createUser({user:"zhubo",pwd:'111111',roles:[{role:"dbAdmin",db:"student"}]})
+
+db.grantRolesToUser("zhubo", [ { role:"dbOwner", db:"admin"} ]) ;
