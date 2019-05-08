@@ -6,7 +6,7 @@ const app = express();
 
 const users = require('./router/api/user')
 
-mongoose.connect('mongodb://zhubo:111111@localhost:27017/admin',{useNewUrlParser:true})
+mongoose.connect('mongodb://zhubo:111111@127.0.0.1:27017/admin',{useNewUrlParser:true})
     .then(() => console.log('cuccess'))
     .catch((err) => console.log(err))
 
@@ -27,10 +27,15 @@ app.use(passport.initialize());
 
 require('./config/passport')(passport);
 
+
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`listen ${port}`);
 });
+
+//docker run -d --name model-app -p 3000:3000 models
 // /usr/local/var/mongodb
 
 // #security:
